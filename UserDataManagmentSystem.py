@@ -48,7 +48,7 @@ def add_person():
     person = { "name": name, "age": age, "email": email, "phone": phone
     }
     return person 
-
+# Takes in contact info 
 def display_contacts(people):
      for i, person in enumerate (people):
           print (i + 1,".", person['name'], '|', person['age'], '|', person['email'], '|', person['phone'])
@@ -67,6 +67,11 @@ def delete_contact(people):
                 print("Invalid number.")
             people.pop(number - 1)
             print("User sucessfully deleted")
+
+            continue_prompt = input("Do you want to delete another contact? (Yes/No): ").strip().lower()
+            if continue_prompt != "yes":
+                break 
+            
 
 # SEARCH USER DATA
 def search(people):
@@ -105,7 +110,6 @@ while True:
         print("Search completed.")
     elif command == "delete":
         delete_contact(people)
-        # people.append(person)
         print("Data successfully deleted.")
         print("Would you like to delete another contact?")
     elif command == "q":
